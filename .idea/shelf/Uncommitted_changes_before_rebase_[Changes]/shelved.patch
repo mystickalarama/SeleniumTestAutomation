@@ -1,0 +1,232 @@
+Index: .idea/encodings.xml
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+deleted file mode 100644
+--- a/.idea/encodings.xml	(revision cbefb2654ec50edf8189e643ba5300d76dcc023a)
++++ /dev/null	(revision cbefb2654ec50edf8189e643ba5300d76dcc023a)
+@@ -1,7 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="Encoding">
+-    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+-    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: src/main/java/Base/BaseTest.java
+===================================================================
+diff --git a/src/main/java/Base/BaseTest.java b/src/main/java/Base/BaseTest.java
+deleted file mode 100644
+--- a/src/main/java/Base/BaseTest.java	(revision cbefb2654ec50edf8189e643ba5300d76dcc023a)
++++ /dev/null	(revision cbefb2654ec50edf8189e643ba5300d76dcc023a)
+@@ -1,23 +0,0 @@
+-package Base;
+-
+-import org.openqa.selenium.WebDriver;
+-import org.openqa.selenium.chrome.ChromeDriver;
+-import org.testng.annotations.AfterMethod;
+-import org.testng.annotations.BeforeMethod;
+-
+-public class BaseTest {
+-
+-    public WebDriver driver;
+-
+-    @BeforeMethod
+-    public void OpenBrowser() {
+-        driver = new ChromeDriver();
+-        driver.manage().window().maximize();
+-        driver.get("https://www.trendyol.com/giris?cb=%2F");
+-    }
+-
+-    @AfterMethod
+-    public void CloseBrowser() {
+-        driver.quit();
+-    }
+-}
+Index: .gitignore
+===================================================================
+diff --git a/.gitignore b/.gitignore
+deleted file mode 100644
+--- a/.gitignore	(revision cbefb2654ec50edf8189e643ba5300d76dcc023a)
++++ /dev/null	(revision cbefb2654ec50edf8189e643ba5300d76dcc023a)
+@@ -1,38 +0,0 @@
+-target/
+-!.mvn/wrapper/maven-wrapper.jar
+-!**/src/main/**/target/
+-!**/src/test/**/target/
+-
+-### IntelliJ IDEA ###
+-.idea/modules.xml
+-.idea/jarRepositories.xml
+-.idea/compiler.xml
+-.idea/libraries/
+-*.iws
+-*.iml
+-*.ipr
+-
+-### Eclipse ###
+-.apt_generated
+-.classpath
+-.factorypath
+-.project
+-.settings
+-.springBeans
+-.sts4-cache
+-
+-### NetBeans ###
+-/nbproject/private/
+-/nbbuild/
+-/dist/
+-/nbdist/
+-/.nb-gradle/
+-build/
+-!**/src/main/**/build/
+-!**/src/test/**/build/
+-
+-### VS Code ###
+-.vscode/
+-
+-### Mac OS ###
+-.DS_Store
+\ No newline at end of file
+Index: .idea/.gitignore
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	(revision cbefb2654ec50edf8189e643ba5300d76dcc023a)
++++ /dev/null	(revision cbefb2654ec50edf8189e643ba5300d76dcc023a)
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: pom.xml
+===================================================================
+diff --git a/pom.xml b/pom.xml
+deleted file mode 100644
+--- a/pom.xml	(revision cbefb2654ec50edf8189e643ba5300d76dcc023a)
++++ /dev/null	(revision cbefb2654ec50edf8189e643ba5300d76dcc023a)
+@@ -1,38 +0,0 @@
+-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+-  <modelVersion>4.0.0</modelVersion>
+-
+-  <groupId>org.example</groupId>
+-  <artifactId>SeleniumTestAutomation</artifactId>
+-  <version>1.0-SNAPSHOT</version>
+-  <packaging>jar</packaging>
+-
+-  <name>SeleniumTestAutomation</name>
+-  <url>http://maven.apache.org</url>
+-
+-  <properties>
+-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+-  </properties>
+-
+-  <dependencies>
+-    <dependency>
+-      <groupId>junit</groupId>
+-      <artifactId>junit</artifactId>
+-      <version>3.8.1</version>
+-      <scope>compile</scope>
+-    </dependency>
+-    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+-    <dependency>
+-      <groupId>org.seleniumhq.selenium</groupId>
+-      <artifactId>selenium-java</artifactId>
+-      <version>4.26.0</version>
+-    </dependency>
+-    <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+-    <dependency>
+-      <groupId>org.testng</groupId>
+-      <artifactId>testng</artifactId>
+-      <version>7.10.2</version>
+-      <scope>compile</scope>
+-    </dependency>
+-  </dependencies>
+-</project>
+Index: src/test/java/LoginTests.java
+===================================================================
+diff --git a/src/test/java/LoginTests.java b/src/test/java/LoginTests.java
+deleted file mode 100644
+--- a/src/test/java/LoginTests.java	(revision cbefb2654ec50edf8189e643ba5300d76dcc023a)
++++ /dev/null	(revision cbefb2654ec50edf8189e643ba5300d76dcc023a)
+@@ -1,51 +0,0 @@
+-import Base.BaseTest;
+-import org.openqa.selenium.By;
+-import org.openqa.selenium.WebDriver;
+-import org.openqa.selenium.chrome.ChromeDriver;
+-import org.testng.Assert;
+-import org.testng.annotations.AfterMethod;
+-import org.testng.annotations.BeforeMethod;
+-import org.testng.annotations.Test;
+-
+-public class LoginTests extends BaseTest {
+-
+-    @Test
+-    public void SuccessfullLogin() throws InterruptedException {
+-        driver.findElement(By.id("login-email")).sendKeys("mystic.kerem@gmail.com");
+-        driver.findElement(By.name("login-password")).sendKeys("Qweasd123.");
+-        driver.findElement(By.cssSelector("[class='q-primary q-fluid q-button-medium q-button submit']")).click();
+-        Thread.sleep(3000);
+-        String text = driver.findElement(By.cssSelector("[class='link account-user'] p")).getText();
+-        System.out.println(text);
+-        Assert.assertEquals("Hesabım", text);
+-    }
+-
+-    @Test
+-    public void UnSuccessfullLogin() throws InterruptedException {
+-        driver.findElement(By.id("login-email")).sendKeys("mystic.kerem@gmail.com");
+-        driver.findElement(By.name("login-password")).sendKeys("Qweasd123..");
+-        driver.findElement(By.cssSelector("[class='q-primary q-fluid q-button-medium q-button submit']")).click();
+-        Thread.sleep(3000);
+-        String warningMessage = driver.findElement(By.cssSelector("[class=\"message\"]")).getText();
+-        Assert.assertEquals(warningMessage, "E-posta adresiniz ve/veya şifreniz hatalı.");
+-
+-        driver.findElement(By.id("login-email")).clear();
+-        driver.findElement(By.id("login-email")).sendKeys("mystic.kereem@gmail.com");
+-        driver.findElement(By.name("login-password")).clear();
+-        driver.findElement(By.name("login-password")).sendKeys("Qweasd123.");
+-        driver.findElement(By.cssSelector("[class='q-primary q-fluid q-button-medium q-button submit']")).click();
+-        Thread.sleep(3000);
+-        String warningMessage2 = driver.findElement(By.cssSelector("[class=\"message\"]")).getText();
+-        Assert.assertEquals(warningMessage2, "E-posta adresiniz ve/veya şifreniz hatalı.");
+-    }
+-
+-    @Test
+-    public void ValidateLogin() throws InterruptedException {
+-        driver.findElement(By.id("login-email")).sendKeys("mystic.keremgmail.com");
+-        driver.findElement(By.name("login-password")).sendKeys("Qweasd123..");
+-        driver.findElement(By.cssSelector("[class='q-primary q-fluid q-button-medium q-button submit']")).click();
+-        Thread.sleep(3000);
+-        String warningMessage = driver.findElement(By.cssSelector("[class=\"message\"]")).getText();
+-        Assert.assertEquals(warningMessage, "Lütfen geçerli bir e-posta adresi giriniz.");
+-    }
+-}
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_22\" default=\"true\" project-jdk-name=\"openjdk-22\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision cbefb2654ec50edf8189e643ba5300d76dcc023a)
++++ b/.idea/misc.xml	(date 1732550734325)
+@@ -1,14 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
+-  <component name="MavenProjectsManager">
+-    <option name="originalFiles">
+-      <list>
+-        <option value="$PROJECT_DIR$/pom.xml" />
+-      </list>
+-    </option>
+-  </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="openjdk-22" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" default="true">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
